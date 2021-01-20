@@ -8,14 +8,17 @@ private:
 	float radius = 32;
 	float speed = 10;
 	int isAlive = 0;
-	int timer = 100;
-	int bflag = 0;
+	int isActive = 0;
+	int timer = 10;
+	int bflag = 1;
 public:
 	Bullet();
 	~Bullet();
-	void init(Scroll* scroll);
-	void alive(Scroll* scroll, char oldkeys[255], char keys[255]);
-	void move();
+
+	int getIsActive();
+	
+	void activate(Scroll* scroll);
+	void move(Scroll* scroll);
 	void draw();
 };
 
