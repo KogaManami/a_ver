@@ -4,9 +4,8 @@
 #include"dxlib.h"
 
 Life::Life() {
-	
 }
-
+Life::~Life() {};
 //げったー
 int Life::getHtx() { return htx; }
 int Life::getHty() { return hty; }
@@ -14,23 +13,24 @@ int Life::getHty() { return hty; }
 
 //ライフ描画
 void Life::ldraw() {
-
+	SetDrawArea(-3840, 0, 3840, 1080);
 	//ライフが３の時
 	if (lifepoint == 3) {
-		DrawCircle(htx, hty, 30, GetColor(0, 0, 0), TRUE);
-		DrawCircle(htx2, hty2, 30, GetColor(0, 0, 0), TRUE);
-		DrawCircle(htx3, hty3, 30, GetColor(0, 0, 0), TRUE);
+		DrawExtendGraph(htx - htr, hty - htr, htx + htr, hty + htr, gh, TRUE);
+		DrawExtendGraph(htx2 - htr, hty2 - htr, htx2 + htr, hty2 + htr, gh, TRUE);
+		DrawExtendGraph(htx3 - htr, hty3 - htr, htx3 + htr, hty3 + htr, gh, TRUE);
 	}
 
 	//ライフが２の時
 	if (lifepoint == 2) {
-		DrawCircle(htx, hty, 30, GetColor(0, 0, 0), TRUE);
-		DrawCircle(htx2, hty2, 30, GetColor(0, 0, 0), TRUE);
+		DrawExtendGraph(htx - htr, hty - htr, htx + htr, hty + htr, gh, TRUE);
+		DrawExtendGraph(htx2 - htr, hty2 - htr, htx2 + htr, hty2 + htr, gh, TRUE);
+
 	}
 
 	//ライフが１の時
 	if (lifepoint == 1) {
-		DrawCircle(htx, hty, 30, GetColor(0, 0, 0), TRUE);
+		DrawExtendGraph(htx - htr, hty - htr, htx + htr, hty + htr, gh, TRUE);
 	}
 	DrawFormatString(0, 30, GetColor(0, 0, 0), "%d", lifepoint);
 }

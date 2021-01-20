@@ -4,29 +4,43 @@ class Scroll
 {
 private:
 	int WIN_WIDTH = 1920;
-	int WIN_HEIGHT = 1080;
-	int posx = 40;
+	int posx = 40;//プレイヤーの座標
 	int posy = 400;
-	int posr = 126;
-	int gh = LoadGraph("a.png");
-	int gh2 = LoadGraph("a.png");
-	int gh3 = LoadGraph("a.png");
-	int hx = 0;
+	int pgh;//プレイヤーの描画
+	int gpgh;
+	int posr = 128;//extend用プレイヤーの半径
+	int gh = LoadGraph("gl1.png");
+	int gh2 = LoadGraph("gl2.png");
+	int gh3 = LoadGraph("gl3.png");
+	int gh4 = LoadGraph("gl4.png");
+	int gh5 = LoadGraph("gl5.png");
+	int gh6 = LoadGraph("gl6.png");
+	int ngh[7];
+	int flag = 0;
+	int timer = 420;
+	//ngh[0] = LoadGraph("l1.png");
+	//int ngh2 = LoadGraph("l2.png");
+	//int ngh3 = LoadGraph("l3.png");
+	//int ngh4 = LoadGraph("l4.png");
+	//int ngh5 = LoadGraph("l5.png");
+	//int ngh6 = LoadGraph("l6.png");
+	int hx[18];
 	int hy = 0;
-	int hx2 = 1920;
+	int hx2[18]; //= 1920;
 	int hy2 = 0;
-	int hx3 = -1920;
+	int hx3[18]; //= -1920;
 	int hy3 = 0;
-
+	int sx = 1920;//グレースケール用の変数(setdrawAreaの座標)
+	int sy = 0;
+	int sx2 = 1920;
+	int sy2 = 1080;
+	int tou;//つかわない
 public:
 	Scroll();
 	~Scroll();
 	int getPosx();
 	int getPosy();
 	int getPosr();
-
-	void setPosx(int posx);
-	void setPosy(int posy);
 	void pdraw();
 	void pmove(char keys[255]);
 	void hdraw();

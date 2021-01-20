@@ -1,6 +1,7 @@
 #include "Enemy.h"
 #include"dxlib.h"
 
+
 Enemy::Enemy(int ex, int ey, int er, int espeed) {
 	this->ex = ex;
 	this->ey = ey;
@@ -20,6 +21,7 @@ void Enemy::setIsalive(int isalive) { this->isalive = isalive; }
 //Ç¶ÇÀÇ›Å[ï`âÊ
 void Enemy::edraw() {
 	if (isalive == 1) {
+		SetDrawArea(-3840, 0, 3840, 1080);
 		DrawBox(ex, ey, ex + er, ey + er, GetColor(50, 80, 20), TRUE);
 	}
 }
