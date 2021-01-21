@@ -1,37 +1,39 @@
 #include "Bullet.h"
+#include"dxlib.h"
 
-Bullet::Bullet() {}
-
-Bullet::~Bullet() {}
-
-void Bullet::init(Scroll* scroll) {
-	//posX = scroll->getPosx();
-	//posY = scroll->getPosy();
+//コンストラクト
+Bullet::Bullet() {
+	isActive = 0;
 }
 
-void Bullet::alive(Scroll* scroll) {
-	timer--;
-	if (timer == 0) {
-		isAlive = 1;
-		timer = 10;
-		
+//デストラクト
+Bullet::~Bullet() {}
+
+//ゲッター
+int Bullet::getIsActive() { return isActive; }
+
+void Bullet::activate(Scroll* scroll) {
+	isActive = 1;
+	timer = 0;
+	posX = scroll->getPosx();
+	posY = scroll->getPosy();
+}
+
+void Bullet::move(Scroll* scroll) {
+	if (isActive == 1) {
+		posX = posX + speed;
 	}
 
-	if(isAlive==1) {
+	if (posX >= 1920) {
+		isActive = 0;
 		posX = scroll->getPosx();
 		posY = scroll->getPosy();
 	}
-}
 
-void Bullet::move() {
-	if (isAlive == 1) {
-		posX = posX + speed;
-	}
 }
 
 void Bullet::draw() {
-	if (isAlive == 1) {
-		DrawCircle(posX+128, posY+64, radius, GetColor(150, 150, 150), TRUE);
-		DrawFormatString(0, 128, GetColor(0, 0, 0), "bullPosX=%f", posX);
+	if (isActive == 1) {
+		DrawCircle(posX + 128, posY + 64, radius, GetColor(150, 150, 150), TRUE);
 	}
 }
