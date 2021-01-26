@@ -35,6 +35,15 @@ private:
 	int sx2 = 1920;//‚±‚±1920;
 	int sy2 = 1080;
 	int tou;//‚Â‚©‚í‚È‚¢
+	int uiflag = 0;
+	int sflag = 0;
+	int uigh = LoadGraph("all.png");
+	int uigh2 = LoadGraph("nored.png");
+	int uigh3 = LoadGraph("noblue.png");
+	int uigh4 = LoadGraph("nogreen.png");
+	int uigh5 = LoadGraph("noyellow.png");
+	int uiposx = posx - 40;
+	int uiposy = posy - 40;
 public:
 	Scroll();
 	~Scroll();
@@ -43,6 +52,8 @@ public:
 	int getPosr();
 	void pdraw();
 	void pmove(char keys[255]);
+	void uidraw(char keys[255]);
+	void uimove(char keys[255]);
 	void hdraw();
 	void hmove(char keys[255]);
 };

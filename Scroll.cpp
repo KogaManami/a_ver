@@ -17,6 +17,7 @@ Scroll::Scroll() {
 		hx2[i] = 1970;//1970
 		hx3[i] = -1970;//1970;
 	}
+	
 }
 
 int Scroll::getPosx() { return posx; }
@@ -120,17 +121,29 @@ void Scroll::hmove(char keys[255]) {
 	
 	if (flag == 0) { sx = 1920; }//flagが０のときグレースケールの画像見えなくする
 	
-	if (flag == 1&&sx<=0) {
+	if ((flag == 1&&sx<=0)) {
 		if (keys[KEY_INPUT_SPACE] == 1) {
 			flag = 3;
 		}
 	}
-	if (flag == 1) {
+	if (flag == 1&&sflag!=1) {
 		sx -= 15;
 	}
-	if (flag == 3) {
-		sx += 15;
+	if (flag == 3&&sflag!=1) {
+		sx2 -= 15;
 	}
+	if (sx2 <= 0&&sx<=0) {
+		sflag = 1;
+		sx = 1920;
+		sx2 = 1920;
+	}
+	if (sflag == 1 ) {
+		if (keys[KEY_INPUT_SPACE] == 1) {
+			flag = 1;
+			sflag = 0;
+		}
+	}
+	
 	//スクロール 普通の画像
 	for (int i = 0; i < 3; i++) {
 	hx[i] = hx[i] - 6;
