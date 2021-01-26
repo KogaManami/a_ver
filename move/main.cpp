@@ -6,7 +6,7 @@
 
 const char TITLE[] = "Fill_Color";
 
-const int WIN_WIDTH = 1920; //ウィンドウ横幅
+const int WIN_WIDTH = 1970; //ウィンドウ横幅
 const int WIN_HEIGHT = 1080;//ウィンドウ縦幅
 
 int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nCmdShow)
@@ -26,8 +26,8 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	SetDrawScreen(DX_SCREEN_BACK);
 
 	//画像などのリソースデータの変数宣言と読み込み
-	const int BULLET_MAX = 10;
-	int timer = 20;
+	const int BULLET_MAX = 20;
+	int timer = 40;
 	Bullet* bullet[BULLET_MAX];
 	
 	Life* life = new Life();
@@ -64,7 +64,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 			if (timer == 0) {
 				if (bullet[i]->getIsActive() == 0) {
 					bullet[i]->activate(scroll);
-					timer = 20;
+					timer = 40;
 					break;
 				}
 			}
@@ -86,6 +86,9 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		scroll->pdraw();
 		for (int i = 0; i < BULLET_MAX; i++) {
 			bullet[i]->draw();
+		}
+		for(int i=1;i<4;i++) {
+			DrawLine(480 * i, 0, 480 * i, 1080, GetColor(0, 0, 0), TRUE);
 		}
 		//---------  ここまでにプログラムを記述  ---------//
 		ScreenFlip();//（ダブルバッファ）裏面

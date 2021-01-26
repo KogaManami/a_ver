@@ -13,7 +13,7 @@ int Life::getHty() { return hty; }
 
 //ライフ描画
 void Life::ldraw() {
-	SetDrawArea(-3840, 0, 3840, 1080);
+	SetDrawArea(-3940, 0, 3940, 1080);
 	//ライフが３の時
 	if (lifepoint == 3) {
 		DrawExtendGraph(htx - htr, hty - htr, htx + htr, hty + htr, gh, TRUE);
@@ -39,7 +39,6 @@ void Life::ldraw() {
 void Life::lif(Scroll* scroll, Enemy* enemy) {
 
 	if (enemy->getIsalive() == 1) {
-
 		//一応短形の当たり判定使ってます
 		if (enemy->getEx() < scroll->getPosx() + scroll->getPosr() && scroll->getPosx() < enemy->getEx() + enemy->getEr() && enemy->getEy() < scroll->getPosy() + scroll->getPosr() && scroll->getPosy() < enemy->getEy() + enemy->getEr()) {
 			enemy->setIsalive(0);//敵を消す
