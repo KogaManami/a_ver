@@ -29,16 +29,17 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	const int BULLET_MAX = 20;
 	int timer = 40;
 	Bullet* bullet[BULLET_MAX];
-	
-	Life* life = new Life();
-	Enemy* enemy = new Enemy(400, 400, 30, 3);
-	Enemy* enemy2 = new Enemy(800, 400, 30, 3);
-	Scroll* scroll = new Scroll();
 
+	Life* life = new Life();
+	Enemy* enemy = new Enemy(1970, 400, 128, 4,1);
+	Enemy* enemy2 = new Enemy(2300, 400, 128, 4,1);
+	Enemy* enemy3 = new Enemy(1600, 400, 128, 10,1);
+	Scroll* scroll = new Scroll();
+	
 	for (int i = 0; i < BULLET_MAX; i++) {
 		bullet[i] = new Bullet();
 	}
-	
+
 	//ゲームループで使う変数の宣言
 	char keys[256] = { 0 }; //最新のキーボード情報用
 	char oldkeys[256] = { 0 };//1ループ（フレーム）前のキーボード情報
@@ -56,7 +57,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		//更新処理
 		//弾のセットtimer
 		timer--;
-		
+
 		//scrollのところにプレイヤー入れてます
 		scroll->hmove(keys);
 		scroll->pmove(keys);
@@ -69,9 +70,10 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 				}
 			}
 		}
-		
+
 		enemy->emove();
 		enemy2->emove();
+		enemy3->gun();
 		for (int i = 0; i < BULLET_MAX; i++) {
 			bullet[i]->move(scroll);
 		}
@@ -80,14 +82,15 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 		//描画処理
 		scroll->hdraw();
-		enemy->edraw();
-		enemy2->edraw();
+		enemy->yellowDraw(scroll);
+		enemy2->yellowDraw(scroll);
+		enemy3->yellowDraw(scroll);
 		life->ldraw();
 		scroll->pdraw();
 		for (int i = 0; i < BULLET_MAX; i++) {
 			bullet[i]->draw();
 		}
-		for(int i=1;i<4;i++) {
+		for (int i = 1; i < 4; i++) {
 			DrawLine(480 * i, 0, 480 * i, 1080, GetColor(0, 0, 0), TRUE);
 		}
 		//---------  ここまでにプログラムを記述  ---------//

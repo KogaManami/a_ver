@@ -1,21 +1,21 @@
 #pragma once
-#include"dxlib.h"
-class Scroll
-{
+#include "dxlib.h"
+
+class Scroll {
 private:
 	int WIN_WIDTH = 1970;
 	int posx = 360;//プレイヤーの座標
 	int posy = 400;
-	int pgh;//プレイヤーの描画
-	int gpgh;
+	int pgh=0;//プレイヤーの描画
+	int gpgh=0;
 	int posr = 128;//extend用プレイヤーの半径
-	int gh = LoadGraph("gl1.png");
-	int gh2 = LoadGraph("gl2.png");
-	int gh3 = LoadGraph("gl3.png");
-	int gh4 = LoadGraph("gl4.png");
-	int gh5 = LoadGraph("gl5.png");
-	int gh6 = LoadGraph("gl6.png");
-	int gh7= LoadGraph("vignette.png");
+	int gh = LoadGraph("Resources/gl1.png");
+	int gh2 = LoadGraph("Resources/gl2.png");
+	int gh3 = LoadGraph("Resources/gl3.png");
+	int gh4 = LoadGraph("Resources/gl4.png");
+	int gh5 = LoadGraph("Resources/gl5.png");
+	int gh6 = LoadGraph("Resources/gl6.png");
+	int gh7= LoadGraph("Resources/vignette.png");
 	int ngh[7];
 	int flag = 0;
 	int timer = 420;
@@ -35,15 +35,31 @@ private:
 
 	int ATCount = 7;
 	int AT = 0;
+
+	int uiflag = 0;
+	int sflag = 0;
+	int uigh = LoadGraph("Resources/all.png");
+	int uigh2 = LoadGraph("Resources/nored.png");
+	int uigh3 = LoadGraph("Resources/noblue.png");
+	int uigh4 = LoadGraph("Resources/nogreen.png");
+	int uigh5 = LoadGraph("Resources/noyellow.png");
+	int uiposx = posx - 40;
+	int uiposy = posy - 40;
 public:
 	Scroll();
 	~Scroll();
+	
 	int getPosx();
 	int getPosy();
 	int getPosr();
+	int getFlag();
+	int getSx();
+	int getSx2();
+	
 	void pdraw();
 	void pmove(char keys[255]);
+	void uidraw(char keys[255]);
+	void uimove(char keys[255]);
 	void hdraw();
 	void hmove(char keys[255]);
 };
-

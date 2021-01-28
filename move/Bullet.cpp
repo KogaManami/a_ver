@@ -4,7 +4,7 @@
 //コンストラクト
 Bullet::Bullet() {
 	isActive = 0;
-	LoadDivGraph("bullet_RGB.png", 9, 9, 1, 64, 64, bullGh);
+	LoadDivGraph("Resources/bullet_RGB.png", 9, 9, 1, 64, 64, bullGh);
 }
 
 //デストラクト
@@ -44,6 +44,7 @@ void Bullet::draw() {
 	}
 	if (isActive == 1) {
 		DrawExtendGraph(posX + 128, posY + 32, posX + 192, posY + 96, bullGh[AT],TRUE);
-		//DrawCircle(posX + 128, posY + 64, radius, GetColor(150, 150, 150), TRUE);
+		
 	}
 }
+
