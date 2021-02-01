@@ -132,6 +132,7 @@
     <ClCompile Include="Life.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Obstacle.cpp" />
+    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Scroll.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +140,7 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Life.h" />
     <ClInclude Include="Obstacle.h" />
+    <ClInclude Include="Scene.h" />
     <ClInclude Include="Scroll.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

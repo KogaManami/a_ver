@@ -1,5 +1,6 @@
 #pragma once
 #include "dxlib.h"
+#include "Scene.h"
 
 class Scroll {
 private:
@@ -45,6 +46,10 @@ private:
 	int uigh5 = LoadGraph("Resources/noyellow.png");
 	int uiposx = posx - 40;
 	int uiposy = posy - 40;
+	int text = 0;
+
+	//コントローラー
+	int Pad = 0;
 public:
 	Scroll();
 	~Scroll();
@@ -55,6 +60,9 @@ public:
 	int getFlag();
 	int getSx();
 	int getSx2();
+	int getText();
+
+	void setText(int text);
 	
 	void pdraw();
 	void pmove(char keys[255]);
@@ -62,4 +70,8 @@ public:
 	void uimove(char keys[255]);
 	void hdraw();
 	void hmove(char keys[255]);
+
+	//色の切り替え
+	void controllerNo1(Scene* scene);
+	void controllerNo2(Scene* scene);
 };

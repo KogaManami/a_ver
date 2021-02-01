@@ -1,5 +1,6 @@
 #pragma once
 #include"Scroll.h"
+
 class Bullet {
 private:
 	float posX = 0;

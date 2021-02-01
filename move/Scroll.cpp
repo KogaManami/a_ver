@@ -27,6 +27,12 @@ int	Scroll::getPosr() { return posr; }
 int Scroll::getFlag() { return flag; }
 int Scroll::getSx() { return sx; }
 int Scroll::getSx2() { return sx2; }
+int Scroll::getText() { return text; }
+
+//セッター
+void Scroll::setText(int text) { this->text = text; }
+void Scroll::controllerNo1(Scene* scene) {}
+void Scroll::controllerNo2(Scene* scene) {}
 
 //プレイヤー移動
 void Scroll::pmove(char keys[255]) {
@@ -71,9 +77,7 @@ void Scroll::pdraw() {
 		} else if (sx2 >= posx) {
 			DrawExtendGraph(posx, posy, posx + posr, posy + posr, plGh[AT], TRUE);
 		}
-
 	}
-
 }
 
 //背景移動
@@ -81,7 +85,6 @@ void Scroll::hmove(char keys[255]) {
 	if ((flag == 0 || flag == 3) && sx >= 1920) {
 		if (keys[KEY_INPUT_SPACE] == 1) {
 			flag = 1;//灰色
-
 		}
 	}
 
@@ -199,6 +202,7 @@ void Scroll::hmove(char keys[255]) {
 	}
 }
 
+
 //背景描画
 void Scroll::hdraw() {
 	//グレースケール
@@ -255,14 +259,4 @@ void Scroll::hdraw() {
 	DrawFormatString(20, 60, GetColor(255, 255, 255), "flag=%d", flag);
 	DrawFormatString(20, 80, GetColor(255, 255, 255), "sx=%d", sx);
 	DrawFormatString(20, 100, GetColor(255, 255, 255), "sx2=%d", sx2);
-
-	
-	/*if (sx <= 0) {
-		DeleteGraph(gh);
-		DeleteGraph(gh2);
-		DeleteGraph(gh3);
-		DeleteGraph(gh4);
-		DeleteGraph(gh5);
-		DeleteGraph(gh6);
-	}*/
 }

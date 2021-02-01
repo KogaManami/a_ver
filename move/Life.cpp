@@ -1,11 +1,23 @@
 #include "Life.h"
+#include <corecrt_math.h>
 #include"Scroll.h"
 #include"Enemy.h"
 #include"Dxlib.h"
 
-void coll(float x,float y,float length) {
-	x = 0;
-	y = 1;
+float coll(float x1,float y1, float x2, float y2, float length) {
+	x1 = x1 - x2;
+	y1 = y1 - y2;
+	length = sqrtf(pow(x1, 2) + pow(y1, 2));
+
+	return length;
+
+	//“–‚½‚è”»’è
+	/*if (ER1 + BuR > length || ER1 + BuR == length) {
+		EFlag1 = 0;
+		BuFlag = 0;
+		Point = Point + 100;
+		PlaySoundMem(SHandle6, DX_PLAYTYPE_BACK);
+	}*/
 }
 
 Life::Life() {}

@@ -44,7 +44,5 @@ void Bullet::draw() {
 	}
 	if (isActive == 1) {
 		DrawExtendGraph(posX + 128, posY + 32, posX + 192, posY + 96, bullGh[AT],TRUE);
-		
 	}
 }
-
