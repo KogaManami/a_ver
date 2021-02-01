@@ -4,6 +4,7 @@
 //コンストラクト
 Bullet::Bullet() {
 	isActive = 0;
+	LoadDivGraph("Resources/bullet_RGB.png", 9, 9, 1, 64, 64, bullGh);
 }
 
 //デストラクト
@@ -29,11 +30,19 @@ void Bullet::move(Scroll* scroll) {
 		posX = scroll->getPosx();
 		posY = scroll->getPosy();
 	}
-
 }
 
 void Bullet::draw() {
+	ATCount--;
+	if(ATCount==0) {
+		ATCount = 4;
+		AT++;
+	}
+
+	if (AT == 8) {
+		AT = 0;
+	}
 	if (isActive == 1) {
-		DrawCircle(posX + 128, posY + 64, radius, GetColor(150, 150, 150), TRUE);
+		DrawExtendGraph(posX + 128, posY + 32, posX + 192, posY + 96, bullGh[AT],TRUE);
 	}
 }

@@ -13,7 +13,7 @@ private:
 	int htx3 = 340;
 	int hty3 = 30;
 	int htr = 32;
-	int gh = LoadGraph("hart.png");
+	int gh = LoadGraph("Resources/hart.png");
 	int flag = 0;//てき喰らった時のフラグ
 	int lifepoint = 3;//ライフポイント
 

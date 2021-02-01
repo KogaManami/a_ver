@@ -1,19 +1,36 @@
 #include "Life.h"
+#include <corecrt_math.h>
 #include"Scroll.h"
 #include"Enemy.h"
-#include"dxlib.h"
+#include"Dxlib.h"
 
-Life::Life() {
+float coll(float x1,float y1, float x2, float y2, float length) {
+	x1 = x1 - x2;
+	y1 = y1 - y2;
+	length = sqrtf(pow(x1, 2) + pow(y1, 2));
+
+	return length;
+
+	//当たり判定
+	/*if (ER1 + BuR > length || ER1 + BuR == length) {
+		EFlag1 = 0;
+		BuFlag = 0;
+		Point = Point + 100;
+		PlaySoundMem(SHandle6, DX_PLAYTYPE_BACK);
+	}*/
 }
+
+Life::Life() {}
+
 Life::~Life() {};
+
 //げったー
 int Life::getHtx() { return htx; }
 int Life::getHty() { return hty; }
 
-
 //ライフ描画
 void Life::ldraw() {
-	SetDrawArea(-3840, 0, 3840, 1080);
+	SetDrawArea(-3940, 0, 3940, 1080);
 	//ライフが３の時
 	if (lifepoint == 3) {
 		DrawExtendGraph(htx - htr, hty - htr, htx + htr, hty + htr, gh, TRUE);
@@ -37,9 +54,7 @@ void Life::ldraw() {
 
 //当たり判定　当たったらライフ1減る
 void Life::lif(Scroll* scroll, Enemy* enemy) {
-
 	if (enemy->getIsalive() == 1) {
-
 		//一応短形の当たり判定使ってます
 		if (enemy->getEx() < scroll->getPosx() + scroll->getPosr() && scroll->getPosx() < enemy->getEx() + enemy->getEr() && enemy->getEy() < scroll->getPosy() + scroll->getPosr() && scroll->getPosy() < enemy->getEy() + enemy->getEr()) {
 			enemy->setIsalive(0);//敵を消す
